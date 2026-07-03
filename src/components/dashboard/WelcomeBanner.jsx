@@ -16,7 +16,7 @@ function WelcomeBanner() {
   });
 
   return (
-    <section className="rounded-3xl bg-gradient-to-r from-blue-600 to-blue-500 p-8 text-white shadow-lg">
+    <section className="rounded-3xl bg-linear-to-r from-blue-600 to-blue-500 p-8 text-white shadow-lg">
       <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
         <div>
           <p className="text-blue-100 text-sm">{today}</p>
