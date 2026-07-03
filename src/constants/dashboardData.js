@@ -1,0 +1,53 @@
+import {
+  HeartPulse,
+  Scale,
+ Droplets,
+  Flame,
+} from "lucide-react";
+
+export const dashboardStats = [
+  {
+    id: 1,
+    title: "Health Score",
+    value: 92,
+    unit: "/100",
+    change: "+5%",
+    description: "Excellent",
+    color: "text-red-500",
+    bgColor: "bg-red-100",
+    icon: HeartPulse,
+  },
+  {
+    id: 2,
+    title: "Weight",
+    value: 70,
+    unit: "kg",
+    change: "-1 kg",
+    description: "This Week",
+    color: "text-blue-500",
+    bgColor: "bg-blue-100",
+    icon: Scale,
+  },
+  {
+    id: 3,
+    title: "Water Intake",
+    value: 2.1,
+    unit: "/3 L",
+    change: "70%",
+    description: "Daily Goal",
+    color: "text-cyan-500",
+    bgColor: "bg-cyan-100",
+    icon: Droplets,
+  },
+  {
+    id: 4,
+    title: "Calories",
+    value: 1950,
+    unit: "kcal",
+    change: "Target 2200",
+    description: "Today",
+    color: "text-orange-500",
+    bgColor: "bg-orange-100",
+    icon: Flame,
+  },
+];
