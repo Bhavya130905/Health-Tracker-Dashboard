@@ -4,6 +4,7 @@ import {
   History,
   Settings,
   Info,
+  User,
 } from "lucide-react";
 
 export const navigation = [
@@ -37,4 +38,10 @@ export const navigation = [
     path: "/about",
     icon: Info,
   },
+  {
+    id: 6,
+    title: "Health Profile",
+    path: "/profile",
+    icon: User,
+  }
 ];

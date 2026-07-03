@@ -1,9 +1,11 @@
 import Card from "../ui/Card.jsx";
+import { useHealth } from "../../context/HealthContext.jsx";
 
 import { HeartPulse } from "lucide-react";
 
 function HealthScore() {
-  const score = 92;
+  const { healthScore } = useHealth();
+  const score = healthScore;
 
   return (
     <Card className="flex h-420 flex-col justify-between">

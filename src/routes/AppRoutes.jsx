@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 
 import Layout from "../layouts/Layout.jsx";
-
+import Profile from "../pages/Profile.jsx";
 import Dashboard from "../pages/Dashboard.jsx";
 import Calculator from "../pages/Calculator.jsx";
 import History from "../pages/History.jsx";
@@ -17,6 +17,7 @@ export default function AppRoutes() {
         <Route path="/history" element={<History />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/about" element={<About />} />
+        <Route path="/profile" element={<Profile />} />
       </Route>
     </Routes>
   );

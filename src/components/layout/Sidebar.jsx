@@ -53,6 +53,7 @@ function Sidebar() {
             item={item}
             collapsed={!isSidebarOpen}
           />
+          
         ))}
       </nav>
 
