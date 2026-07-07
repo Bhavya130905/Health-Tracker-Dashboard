@@ -39,11 +39,22 @@ export function HistoryProvider({ children }) {
     setRecords([]);
   }
 
+  function updateRecord(updatedRecord) {
+    setRecords((prev) =>
+      prev.map((record) =>
+        record.id === updatedRecord.id
+          ? updatedRecord
+          : record
+      )
+    );
+  }
+
   return (
     <HistoryContext.Provider
       value={{
         records,
         addRecord,
+        updateRecord,
         deleteRecord,
         clearAllHistory,
       }}

@@ -1,4 +1,4 @@
-import { HeartPulse, ChevronLeft, ChevronRight } from "lucide-react";
+import { HeartPulse, ChevronLeft, ChevronRight, History } from "lucide-react";
 
 import { navigation } from "../../constants/navigation.js";
 import { useSidebar } from "../../context/SidebarContext.jsx";

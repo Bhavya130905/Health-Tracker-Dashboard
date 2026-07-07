@@ -1,4 +1,4 @@
-import Button from "../ui/Buttons.jsx";
+import Button from "../ui/Button.jsx";
 import { useHealth } from "../../context/HealthContext.jsx";
 
 function WelcomeBanner() {

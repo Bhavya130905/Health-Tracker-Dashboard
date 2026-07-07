@@ -5,6 +5,7 @@ import {
   Settings,
   Info,
   User,
+  BarChart3
 } from "lucide-react";
 
 export const navigation = [
@@ -43,5 +44,11 @@ export const navigation = [
     title: "Health Profile",
     path: "/profile",
     icon: User,
-  }
+  },
+  {
+    id: 7,
+    title:"Analytics",
+    path:"/analytics",
+    icon: BarChart3
+}
 ];

@@ -8,6 +8,7 @@ import QuickActions from "../components/dashboard/QuickActions.jsx";
 import { useHealth } from "../context/HealthContext.jsx";
 import HealthInsights from "../components/dashboard/HealthInsights.jsx";
 import { useHistory } from "../context/HistoryContext.jsx";
+import ReportButton from "../components/report/ReportButton.jsx";
 
 function Dashboard() {
   const { records, addRecord } = useHistory();
@@ -48,7 +49,14 @@ function Dashboard() {
         <GoalsCard />
         <RecentActivity />
       </section>
-<button
+
+      <QuickActions />
+
+      <section>
+        <HealthInsights />
+      </section>
+
+      <button
         onClick={() =>
           addRecord({
             date: new Date().toLocaleDateString(),
@@ -64,14 +72,9 @@ function Dashboard() {
       >
         Add Demo Record
       </button>
-      
-      <QuickActions />
-
-      <section>
-        <HealthInsights />
-      </section>
-
-      
+      <div className="flex justify-end">
+        <ReportButton />
+      </div>
 
     </div>
   );

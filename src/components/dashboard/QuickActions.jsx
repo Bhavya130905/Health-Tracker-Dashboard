@@ -1,5 +1,5 @@
 import Card from "../ui/Card.jsx";
-import Button from "../ui/Buttons.jsx";
+import Button from "../ui/Button.jsx";
 
 function QuickActions() {
   return (
