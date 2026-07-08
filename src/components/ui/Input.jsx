@@ -1,27 +1,45 @@
-function Input({
-  label,
-  error,
+import clsx from "clsx";
+
+function Card({
+  children,
   className = "",
-  ...props
+  hover = true,
+  padding = "md",
 }) {
+  const paddings = {
+    sm: "p-4",
+    md: "p-6",
+    lg: "p-8",
+  };
+
   return (
-    <div className="space-y-2">
-      {label && (
-        <label className="block text-sm font-medium text-slate-700">
-          {label}
-        </label>
-      )}
+    <div
+      className={clsx(
+        `
+        rounded-3xl
+        border
+        border-slate-200
+        bg-white
+        shadow-sm
+        transition-all
+        duration-300
 
-      <input
-        className={`w-full rounded-xl border border-slate-300 px-4 py-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 outline-none transition ${className}`}
-        {...props}
-      />
+        dark:bg-slate-900
+        dark:border-slate-700
 
-      {error && (
-        <p className="text-sm text-red-600">{error}</p>
+        `,
+        hover &&
+          `
+          hover:-translate-y-1
+          hover:shadow-xl
+        `,
+        paddings[padding],
+        className
       )}
+    >
+      {children}
     </div>
   );
 }
 
-export default Input;
+export default Card;
