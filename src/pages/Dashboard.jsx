@@ -1,43 +1,34 @@
-import WelcomeBanner from "../components/dashboard/WelcomeBanner.jsx";
-import StatsGrid from "../components/dashboard/StatsGrid.jsx";
-import WeeklyChart from "../components/dashboard/WeeklyChart.jsx";
-import HealthScore from "../components/dashboard/HealthScore.jsx";
-import GoalsCard from "../components/dashboard/GoalsCard.jsx";
-import RecentActivity from "../components/dashboard/RecentActivity.jsx";
-import QuickActions from "../components/dashboard/QuickActions.jsx";
-import HealthInsights from "../components/dashboard/HealthInsights.jsx";
-import ReportButton from "../components/report/ReportButton.jsx";
+import { useEffect, useState } from "react";
+
+import DashboardHeader from "../components/dashboard/DashboardHeader";
+import DashboardGrid from "../components/dashboard/DashboardGrid";
+import DashboardLoader from "../components/dashboard/DashboardLoader";
+
+import MotionWrapper from "../components/ui/MotionWrapper";
 
 function Dashboard() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <DashboardLoader />;
+  }
+
   return (
-    <div className="space-y-8">
-      <WelcomeBanner />
+    <MotionWrapper>
+      <div className="space-y-8">
+        <DashboardHeader />
 
-      <StatsGrid />
-
-      <section className="grid grid-cols-1 gap-6 xl:grid-cols-3">
-        <div className="xl:col-span-2">
-          <WeeklyChart />
-        </div>
-
-        <HealthScore />
-      </section>
-
-      <section className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-        <GoalsCard />
-        <RecentActivity />
-      </section>
-
-      <QuickActions />
-
-      <section>
-        <HealthInsights />
-      </section>
-
-      <div className="flex justify-end">
-        <ReportButton />
+        <DashboardGrid />
       </div>
-    </div>
+    </MotionWrapper>
   );
 }
 
