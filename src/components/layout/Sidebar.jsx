@@ -6,7 +6,6 @@ import {
 
 import sidebarNavigation from "../../constants/sidebarNavigation.js";
 import { useSidebar } from "../../context/SidebarContext.jsx";
-import SidebarFooter from "./SidebarFooter.jsx";
 import SidebarSection from "./SidebarSection.jsx";
 
 function Sidebar() {

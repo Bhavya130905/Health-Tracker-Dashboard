@@ -5,7 +5,6 @@ import {
   Calculator,
   User,
   Settings,
-  FileText,
 } from "lucide-react";
 
 const command = [
@@ -44,12 +43,6 @@ const command = [
     title: "Settings",
     path: "/settings",
     icon: Settings,
-  },
-  {
-    id: 7,
-    title: "Reports",
-    path: "/reports",
-    icon: FileText,
   },
 ];
 

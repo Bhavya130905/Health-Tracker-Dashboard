@@ -1,9 +1,11 @@
 // Health-Tracker-Dashboard-main/src/components/dashboard/WelcomeBanner.jsx
+import { useNavigate } from "react-router-dom";
 import { useHealth } from "../../context/HealthContext.jsx";
 import Button from "../ui/Button.jsx";
 
 function WelcomeBanner() {
   const { healthScore, profile } = useHealth();
+  const navigate = useNavigate();
 
   const today = new Intl.DateTimeFormat("en-US", {
     weekday: "long",
@@ -41,9 +43,9 @@ function WelcomeBanner() {
             </h2>
           </div>
 
-          {/* Fixed button - always visible */}
-          <Button 
-            className=" text-blue-600 hover:bg-slate-100 shadow-lg font-semibold px-6
+          <Button
+            onClick={() => navigate("/history")}
+            className="bg-white text-blue-600 hover:bg-slate-100 shadow-lg font-semibold px-6
                        dark:bg-white dark:text-blue-700 dark:hover:bg-slate-100"
           >
             Complete Health Check

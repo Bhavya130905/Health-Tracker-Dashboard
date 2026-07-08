@@ -1,8 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import Button from "../ui/Button.jsx";
 import { useHistory } from "../../context/HistoryContext.jsx";
 
 function QuickActions() {
   const { addRecord } = useHistory();
+  const navigate = useNavigate();
 
   return (
     <div className="flex flex-wrap gap-3">
@@ -20,7 +22,9 @@ function QuickActions() {
         Quick Log Today
       </Button>
       
-      <Button variant="secondary">View Full Report</Button>
+      <Button variant="secondary" onClick={() => navigate("/analytics")}>
+        View Full Report
+      </Button>
     </div>
   );
 }

@@ -97,15 +97,6 @@ button {
   transition: all 0.2s ease;
 }
 
-/* Ensure buttons are visible in both themes */
-.bg-white {
-  color: #1e40af !important; /* Strong blue text */
-}
-
-.dark .bg-white {
-  color: #1e3a8a !important;
-}
-
 /* ==========================================================
    Scrollbar
 ========================================================== */
@@ -133,10 +124,6 @@ button {
 }
 
 /* Dark Mode Polish */
-.dark .bg-white {
-  color: #1e3a8a;
-}
-
 .dark input, .dark select, .dark textarea {
   background-color: #1e2937;
   border-color: #475569;

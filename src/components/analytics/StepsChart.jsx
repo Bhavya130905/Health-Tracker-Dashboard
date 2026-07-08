@@ -1,11 +1,11 @@
 import Card from "../ui/Card.jsx";
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
-import { createStepsChart } from "../../utils/chartHelpers.js";  // Fixed: was createStepsCharts
+import { createStepsChart } from "../../utils/chartHelpers.js";
 import { useHistory } from "../../context/HistoryContext.jsx";
 
 function StepsChart() {
   const { records } = useHistory();
-  const data = createStepsChart(records);  // Fixed
+  const data = createStepsChart(records);
 
   return (
     <Card>

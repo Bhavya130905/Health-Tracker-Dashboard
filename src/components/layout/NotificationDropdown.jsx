@@ -44,7 +44,7 @@ function NotificationDropdown({
         right-0
         top-16
         z-50
-        w-26rem
+        w-[26rem]
         rounded-3xl
         border
         border-slate-200
@@ -112,7 +112,7 @@ function NotificationDropdown({
 
       {/* Body */}
 
-      <div className="max-h-420px overflow-y-auto p-4">
+      <div className="max-h-[420px] overflow-y-auto p-4">
 
         {notifications.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-10">

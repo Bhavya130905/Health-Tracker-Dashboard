@@ -1,5 +1,5 @@
 // Health-Tracker-Dashboard-main/src/components/history/HealthHistoryTable.jsx
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   Search,
   ArrowUpDown,
@@ -57,6 +57,10 @@ function HealthHistoryTable() {
 
     return data;
   }, [records, search, sortNewest]);
+
+  useEffect(() => {
+    setPage(1);
+  }, [search, sortNewest]);
 
   const totalPages = Math.ceil(
     filteredRecords.length / ITEMS_PER_PAGE

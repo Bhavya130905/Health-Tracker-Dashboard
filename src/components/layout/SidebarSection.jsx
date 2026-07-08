@@ -16,6 +16,7 @@ function SidebarSection({
       <div className="space-y-1">
         {items.map((item) => (
           <SidebarItem
+            key={item.id}
             item={item}
             collapsed={collapsed}
           />

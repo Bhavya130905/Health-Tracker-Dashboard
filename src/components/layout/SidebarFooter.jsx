@@ -80,10 +80,6 @@ function SidebarFooter({
                             {APP_INFO.storageUsed}% Used
                         </p>
                     </div>
-
-                    <SidebarFooter
-                        collapsed={!isSidebarOpen}
-                    />
                 </div>
             )}
         </footer>

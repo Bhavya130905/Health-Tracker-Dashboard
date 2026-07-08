@@ -8,7 +8,7 @@ function HealthScore() {
   const score = healthScore;
 
   return (
-    <Card className="flex h-420 flex-col justify-between">
+    <Card className="flex h-[420px] flex-col justify-between">
       <div>
         <h2 className="text-xl font-bold text-slate-800">
           Health Score
@@ -20,7 +20,7 @@ function HealthScore() {
       </div>
 
       <div className="flex flex-1 items-center justify-center">
-        <div className="relative flex h-52 w-52 items-center justify-center rounded-full border-12px border-blue-600">
+        <div className="relative flex h-52 w-52 items-center justify-center rounded-full border-[12px] border-blue-600">
           <div className="text-center">
             <HeartPulse
               className="mx-auto text-red-500"

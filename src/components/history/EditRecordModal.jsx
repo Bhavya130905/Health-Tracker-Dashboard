@@ -31,14 +31,12 @@ function EditRecordModal({
   function handleSubmit(e) {
     e.preventDefault();
 
-    if (
-      !form.weight ||
-      !form.water ||
-      !form.sleep ||
-      !form.calories ||
-      !form.steps
-    )
-      return;
+    const requiredFields = ["weight", "water", "sleep", "calories", "steps"];
+    const hasEmptyField = requiredFields.some(
+      (field) => form[field] === "" || form[field] === null || form[field] === undefined
+    );
+
+    if (hasEmptyField) return;
 
     onSave(form);
   }
@@ -58,6 +56,7 @@ function EditRecordModal({
             className="rounded-xl border p-3"
             name="weight"
             type="number"
+            min="0"
             value={form.weight}
             onChange={handleChange}
             placeholder="Weight"
@@ -67,6 +66,7 @@ function EditRecordModal({
             className="rounded-xl border p-3"
             name="water"
             type="number"
+            min="0"
             step="0.1"
             value={form.water}
             onChange={handleChange}
@@ -77,6 +77,7 @@ function EditRecordModal({
             className="rounded-xl border p-3"
             name="sleep"
             type="number"
+            min="0"
             step="0.5"
             value={form.sleep}
             onChange={handleChange}
@@ -87,6 +88,7 @@ function EditRecordModal({
             className="rounded-xl border p-3"
             name="calories"
             type="number"
+            min="0"
             value={form.calories}
             onChange={handleChange}
             placeholder="Calories"
@@ -96,6 +98,7 @@ function EditRecordModal({
             className="rounded-xl border p-3"
             name="steps"
             type="number"
+            min="0"
             value={form.steps}
             onChange={handleChange}
             placeholder="Steps"

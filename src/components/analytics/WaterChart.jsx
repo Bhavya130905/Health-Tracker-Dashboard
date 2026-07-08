@@ -1,11 +1,11 @@
 import Card from "../ui/Card.jsx";
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
-import { createWaterChart } from "../../utils/chartHelpers.js";  // ✅ Fixed import
+import { createWaterChart } from "../../utils/chartHelpers.js";
 import { useHistory } from "../../context/HistoryContext.jsx";
 
 function WaterChart() {
   const { records } = useHistory();
-  const data = createWaterChart(records);  // ✅ Now correctly imported
+  const data = createWaterChart(records);
 
   return (
     <Card>

@@ -20,7 +20,7 @@ const HealthContext = createContext();
 const defaultProfile = {
   name: "Bhavya",
   age: 20,
-  gender: "Female",
+  gender: "female",
   height: 160.02,
   weight: 67.50,
   activity: "moderate",

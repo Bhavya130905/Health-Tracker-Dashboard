@@ -72,6 +72,7 @@ function HealthRecordForm() {
         <Input
           label="Weight (kg)"
           type="number"
+          min="0"
           name="weight"
           value={form.weight}
           onChange={handleChange}
@@ -80,6 +81,7 @@ function HealthRecordForm() {
         <Input
           label="Water Intake (L)"
           type="number"
+          min="0"
           step="0.1"
           name="water"
           value={form.water}
@@ -89,6 +91,7 @@ function HealthRecordForm() {
         <Input
           label="Sleep (Hours)"
           type="number"
+          min="0"
           step="0.5"
           name="sleep"
           value={form.sleep}
@@ -98,6 +101,7 @@ function HealthRecordForm() {
         <Input
           label="Calories"
           type="number"
+          min="0"
           name="calories"
           value={form.calories}
           onChange={handleChange}
@@ -106,6 +110,7 @@ function HealthRecordForm() {
         <Input
           label="Steps"
           type="number"
+          min="0"
           name="steps"
           value={form.steps}
           onChange={handleChange}
