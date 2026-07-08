@@ -5,6 +5,7 @@
 @import "./variables.css";
 @import "./utilities.css";
 @import "./animations.css";
+
 /* ==========================================================
    Base
 ========================================================== */
@@ -22,9 +23,7 @@ html {
 body {
   margin: 0;
   font-family: Inter, sans-serif;
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* ==========================================================
@@ -88,6 +87,23 @@ body {
 body {
   background: var(--color-background);
   color: var(--color-text);
+}
+
+/* ==========================================================
+   Button improvements (especially for WelcomeBanner)
+========================================================== */
+
+button {
+  transition: all 0.2s ease;
+}
+
+/* Ensure buttons are visible in both themes */
+.bg-white {
+  color: #1e40af !important; /* Strong blue text */
+}
+
+.dark .bg-white {
+  color: #1e3a8a !important;
 }
 
 /* ==========================================================

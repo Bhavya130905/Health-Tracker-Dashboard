@@ -1,7 +1,7 @@
+// Health-Tracker-Dashboard-main/src/components/history/HealthHistoryTable.jsx
 import { useMemo, useState } from "react";
 import {
   Search,
-  Trash2,
   ArrowUpDown,
 } from "lucide-react";
 
@@ -113,8 +113,19 @@ function HealthHistoryTable() {
 
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="border-b text-left">
-              {paginated.map(record => (
+            <thead className="border-b text-left text-sm font-medium text-slate-500">
+              <tr>
+                <th className="py-4 text-left">Date</th>
+                <th className="py-4 text-left">Weight</th>
+                <th className="py-4 text-left">Water</th>
+                <th className="py-4 text-left">Sleep</th>
+                <th className="py-4 text-left">Calories</th>
+                <th className="py-4 text-left">Steps</th>
+                <th className="py-4 text-left">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {paginated.map((record) => (
                 <HealthHistoryRow
                   key={record.id}
                   record={record}
@@ -122,8 +133,7 @@ function HealthHistoryTable() {
                   onDelete={setSelectedId}
                 />
               ))}
-            </thead>
-
+            </tbody>
           </table>
         </div>
 

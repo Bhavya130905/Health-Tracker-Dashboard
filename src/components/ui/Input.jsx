@@ -1,45 +1,32 @@
 import clsx from "clsx";
 
-function Card({
-  children,
+function Input({
+  label,
+  type = "text",
+  value,
+  onChange,
   className = "",
-  hover = true,
-  padding = "md",
+  ...props
 }) {
-  const paddings = {
-    sm: "p-4",
-    md: "p-6",
-    lg: "p-8",
-  };
-
   return (
-    <div
-      className={clsx(
-        `
-        rounded-3xl
-        border
-        border-slate-200
-        bg-white
-        shadow-sm
-        transition-all
-        duration-300
-
-        dark:bg-slate-900
-        dark:border-slate-700
-
-        `,
-        hover &&
-          `
-          hover:-translate-y-1
-          hover:shadow-xl
-        `,
-        paddings[padding],
-        className
+    <div className="space-y-1.5">
+      {label && (
+        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">
+          {label}
+        </label>
       )}
-    >
-      {children}
+      <input
+        type={type}
+        value={value}
+        onChange={onChange}
+        className={clsx(
+          "w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:border-slate-700 dark:bg-slate-900",
+          className
+        )}
+        {...props}
+      />
     </div>
   );
 }
 
-export default Card;
+export default Input;
