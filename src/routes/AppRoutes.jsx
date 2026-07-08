@@ -1,3 +1,4 @@
+// Health-Tracker-Dashboard-main/src/routes/AppRoutes.jsx
 import { Routes, Route } from "react-router-dom";
 
 import Layout from "../layouts/Layout.jsx";
@@ -9,45 +10,18 @@ import Settings from "../pages/Settings.jsx";
 import About from "../pages/About.jsx";
 import Analytics from "../pages/Analytics.jsx";
 
-
 export default function AppRoutes() {
   return (
     <Routes>
       <Route element={<Layout />}>
-        <Route
-          path="/"
-          element={<Dashboard />}
-        />
-        <Route
-          path="/calculator"
-          element={<Calculator />}
-        />
-        <Route
-          path="/history"
-          element={<History />}
-        />
-        <Route
-          path="/settings"
-          element={<Settings />}
-        />
-        <Route
-          path="/about"
-          element={<About />}
-        />
-        <Route
-          path="/history"
-          element={<History />}
-        />
-        <Route
-          path="/profile"
-          element={<Profile />}
-        />
-        <Route
-        path="/analytics"
-        element={<Analytics />}
-      />
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/calculator" element={<Calculator />} />
+        <Route path="/history" element={<History />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/analytics" element={<Analytics />} />
       </Route>
-      
     </Routes>
   );
 }

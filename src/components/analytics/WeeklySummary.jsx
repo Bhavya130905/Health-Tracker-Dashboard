@@ -4,49 +4,31 @@ import { useHistory } from "../../context/HistoryContext.jsx";
 function WeeklySummary() {
   const { records } = useHistory();
 
-  if (!records.length) return null;
+  if (records.length === 0) {
+    return (
+      <Card>
+        <p className="text-slate-500">No data yet. Log some records to see summary.</p>
+      </Card>
+    );
+  }
 
-  const avg = (field) =>
-    (
-      records.reduce(
-        (sum, r) => sum + Number(r[field]),
-        0
-      ) / records.length
-    ).toFixed(1);
-
-  const cards = [
-    {
-      title: "Avg Weight",
-      value: avg("weight") + " kg",
-    },
-    {
-      title: "Avg Water",
-      value: avg("water") + " L",
-    },
-    {
-      title: "Avg Sleep",
-      value: avg("sleep") + " hrs",
-    },
-    {
-      title: "Avg Steps",
-      value: avg("steps"),
-    },
-  ];
+  const totalWeight = records.reduce((sum, r) => sum + Number(r.weight || 0), 0);
+  const avgWeight = (totalWeight / records.length).toFixed(1);
 
   return (
-    <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-      {cards.map((card) => (
-        <Card key={card.title}>
-          <p className="text-slate-500">
-            {card.title}
-          </p>
-
-          <h2 className="mt-2 text-3xl font-bold">
-            {card.value}
-          </h2>
-        </Card>
-      ))}
-    </div>
+    <Card>
+      <h3 className="font-semibold mb-4">Weekly Summary</h3>
+      <div className="grid grid-cols-2 gap-6">
+        <div>
+          <p className="text-sm text-slate-500">Average Weight</p>
+          <p className="text-4xl font-bold text-blue-600">{avgWeight} kg</p>
+        </div>
+        <div>
+          <p className="text-sm text-slate-500">Total Records</p>
+          <p className="text-4xl font-bold">{records.length}</p>
+        </div>
+      </div>
+    </Card>
   );
 }
 

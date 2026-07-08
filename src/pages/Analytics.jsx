@@ -1,6 +1,6 @@
-import WeightChart from "../components/analytics/WeightCharts.jsx";
-import WaterChart from "../components/analytics/WaterCharts.jsx";
-import SleepChart from "../components/analytics/SleepCharts.jsx";
+import WeightChart from "../components/analytics/WeightChart.jsx";
+import WaterChart from "../components/analytics/WaterChart.jsx";
+import SleepChart from "../components/analytics/SleepChart.jsx";
 import StepsChart from "../components/analytics/StepsChart.jsx";
 import WeeklySummary from "../components/analytics/WeeklySummary.jsx";
 

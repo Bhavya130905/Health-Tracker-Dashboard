@@ -131,3 +131,23 @@ button {
   background: #2563eb;
   color: white;
 }
+
+/* Dark Mode Polish */
+.dark .bg-white {
+  color: #1e3a8a;
+}
+
+.dark input, .dark select, .dark textarea {
+  background-color: #1e2937;
+  border-color: #475569;
+  color: #f1f5f9;
+}
+
+.dark .rounded-3xl {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3);
+}
+
+/* Better button contrast */
+button.bg-white {
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}

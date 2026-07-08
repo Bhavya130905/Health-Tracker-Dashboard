@@ -4,35 +4,28 @@ import { dailyGoals } from "../../constants/goalsData.js";
 function GoalsCard() {
   return (
     <Card>
-      <h2 className="mb-6 text-xl font-bold text-slate-800">
-        Today's Goals
-      </h2>
-
+      <h3 className="font-semibold mb-5">Daily Goals</h3>
       <div className="space-y-5">
         {dailyGoals.map((goal) => {
           const Icon = goal.icon;
-
           return (
-            <div key={goal.id}>
-              <div className="mb-2 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <Icon size={20} className="text-slate-600" />
-
-                  <span className="font-medium">
-                    {goal.title}
+            <div key={goal.id} className="flex items-center gap-4">
+              <div className={`p-3 rounded-2xl ${goal.color.replace("bg-", "bg-") + " text-white"}`}>
+                <Icon size={24} />
+              </div>
+              <div className="flex-1">
+                <div className="flex justify-between text-sm mb-1">
+                  <span className="font-medium">{goal.title}</span>
+                  <span className="text-slate-500">
+                    {goal.current} / {goal.goal} {goal.unit}
                   </span>
                 </div>
-
-                <span className="text-sm text-slate-500">
-                  {goal.current} / {goal.goal} {goal.unit}
-                </span>
-              </div>
-
-              <div className="h-3 overflow-hidden rounded-full bg-slate-200">
-                <div
-                  className={`${goal.color} h-full rounded-full transition-all duration-700`}
-                  style={{ width: `${goal.progress}%` }}
-                />
+                <div className="h-2 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+                  <div
+                    className={`h-full ${goal.color}`}
+                    style={{ width: `${goal.progress}%` }}
+                  />
+                </div>
               </div>
             </div>
           );

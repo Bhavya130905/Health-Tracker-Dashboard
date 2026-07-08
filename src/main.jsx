@@ -8,6 +8,7 @@ import App from "./App";
 import { NotificationProvider } from "./context/NotificationContext.jsx";
 import { ThemeProvider } from "./context/ThemeContext.jsx";
 import { SidebarProvider } from "./context/SidebarContext.jsx";
+import { ErrorBoundary } from "./components/ui/ErrorBoundary.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -17,7 +18,9 @@ createRoot(document.getElementById("root")).render(
           <HealthProvider>
             <HistoryProvider>
               <NotificationProvider>
-                <App />
+                <ErrorBoundary>
+                  <App />
+                </ErrorBoundary>
               </NotificationProvider>
             </HistoryProvider>
           </HealthProvider>

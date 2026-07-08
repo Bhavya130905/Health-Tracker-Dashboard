@@ -3,94 +3,17 @@ import { useHealth } from "../../context/HealthContext.jsx";
 import { getHealthRecommendation } from "../../utils/recommendations.js";
 
 function HealthInsights() {
-  const {
-    bmi,
-    bmiCategory,
-    bmr,
-    calories,
-    water,
-    idealWeight,
-  } = useHealth();
-
-  const recommendation = getHealthRecommendation({
-    bmi,
-    water,
-  });
+  const { bmi, water } = useHealth();
+  const recommendation = getHealthRecommendation({ bmi, water });
 
   return (
     <Card>
-      <h2 className="mb-6 text-2xl font-bold text-slate-800">
-        Health Insights
-      </h2>
-
-      <div className="space-y-5">
-
-        <Insight
-          label="BMI"
-          value={bmi}
-          extra={bmiCategory.label}
-          color={bmiCategory.color}
-        />
-
-        <Insight
-          label="BMR"
-          value={`${bmr} kcal`}
-        />
-
-        <Insight
-          label="Daily Calories"
-          value={`${calories} kcal`}
-        />
-
-        <Insight
-          label="Water Intake"
-          value={`${water} L`}
-        />
-
-        <Insight
-          label="Ideal Weight"
-          value={`${idealWeight.min} - ${idealWeight.max} kg`}
-        />
-
-      </div>
-
-      <div className="mt-8 rounded-2xl bg-blue-50 p-5">
-        <h3 className="font-semibold text-blue-700">
-          💡 {recommendation.title}
-        </h3>
-
-        <p className="mt-2 text-sm text-slate-600">
-          {recommendation.message}
-        </p>
+      <h3 className="font-semibold mb-3">Health Insights</h3>
+      <div className={`p-5 rounded-2xl border-l-4 ${recommendation.type === "success" ? "border-green-500 bg-green-50" : "border-amber-500 bg-amber-50"}`}>
+        <p className="font-medium">{recommendation.title}</p>
+        <p className="mt-2 text-slate-600">{recommendation.message}</p>
       </div>
     </Card>
-  );
-}
-
-function Insight({
-  label,
-  value,
-  extra,
-  color = "text-slate-600",
-}) {
-  return (
-    <div className="flex items-center justify-between border-b pb-3 last:border-none">
-      <span className="font-medium text-slate-600">
-        {label}
-      </span>
-
-      <div className="text-right">
-        <div className="font-bold text-slate-800">
-          {value}
-        </div>
-
-        {extra && (
-          <div className={`text-sm ${color}`}>
-            {extra}
-          </div>
-        )}
-      </div>
-    </div>
   );
 }
 

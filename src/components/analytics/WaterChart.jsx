@@ -1,22 +1,22 @@
 import Card from "../ui/Card.jsx";
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
-import { createStepsChart } from "../../utils/chartHelpers.js";  // Fixed: was createStepsCharts
+import { createWaterChart } from "../../utils/chartHelpers.js";  // ✅ Fixed import
 import { useHistory } from "../../context/HistoryContext.jsx";
 
-function StepsChart() {
+function WaterChart() {
   const { records } = useHistory();
-  const data = createStepsChart(records);  // Fixed
+  const data = createWaterChart(records);  // ✅ Now correctly imported
 
   return (
     <Card>
-      <h3 className="font-semibold mb-4">Steps Trend</h3>
+      <h3 className="font-semibold mb-4">Water Intake</h3>
       <div className="h-72">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={data}>
             <XAxis dataKey="date" />
             <YAxis />
             <Tooltip />
-            <Line type="monotone" dataKey="steps" stroke="#3b82f6" strokeWidth={3} />
+            <Line type="monotone" dataKey="water" stroke="#3b82f6" strokeWidth={3} />
           </LineChart>
         </ResponsiveContainer>
       </div>
@@ -24,4 +24,4 @@ function StepsChart() {
   );
 }
 
-export default StepsChart;
+export default WaterChart;

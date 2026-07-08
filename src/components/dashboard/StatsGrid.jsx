@@ -1,74 +1,25 @@
-import {
-  HeartPulse,
-  Scale,
-  Droplets,
-  Flame,
-} from "lucide-react";
-
-import StatCard from "./StatCard.jsx";
-import { useHealth } from "../../context/HealthContext.jsx";
+import Card from "../ui/Card.jsx";
+import { dashboardStats } from "../../constants/dashboardData.js";
 
 function StatsGrid() {
-  const {
-    profile,
-    healthScore,
-    water,
-    calories,
-  } = useHealth();
-
-  const stats = [
-    {
-      id: 1,
-      title: "Health Score",
-      value: healthScore,
-      unit: "/100",
-      change: "Live",
-      description: "Calculated",
-      icon: HeartPulse,
-      color: "text-red-500",
-      bgColor: "bg-red-100",
-    },
-    {
-      id: 2,
-      title: "Weight",
-      value: profile.weight,
-      unit: "kg",
-      change: "Current",
-      description: "Body Weight",
-      icon: Scale,
-      color: "text-blue-500",
-      bgColor: "bg-blue-100",
-    },
-    {
-      id: 3,
-      title: "Water",
-      value: water,
-      unit: "L",
-      change: "Daily",
-      description: "Recommended",
-      icon: Droplets,
-      color: "text-cyan-500",
-      bgColor: "bg-cyan-100",
-    },
-    {
-      id: 4,
-      title: "Calories",
-      value: calories,
-      unit: "kcal",
-      change: "Daily",
-      description: "Maintenance",
-      icon: Flame,
-      color: "text-orange-500",
-      bgColor: "bg-orange-100",
-    },
-  ];
-
   return (
-    <section className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
-      {stats.map((stat) => (
-        <StatCard key={stat.id} {...stat} />
-      ))}
-    </section>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {dashboardStats.map((stat) => {
+        const Icon = stat.icon;
+        return (
+          <Card key={stat.id} className="flex items-center gap-4">
+            <div className={`p-3 rounded-2xl ${stat.bgColor}`}>
+              <Icon className={`w-8 h-8 ${stat.color}`} />
+            </div>
+            <div>
+              <p className="text-sm text-slate-500">{stat.title}</p>
+              <p className="text-3xl font-bold">{stat.value}{stat.unit}</p>
+              <p className="text-xs text-green-600">{stat.change}</p>
+            </div>
+          </Card>
+        );
+      })}
+    </div>
   );
 }
 
