@@ -6,7 +6,7 @@ import QuickActions from "./quickActions/QuickActions";
 
 function DashboardGrid() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 lg:space-y-10">
       <HealthSummaryGrid />
 
       <ChartsGrid />

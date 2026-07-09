@@ -2,34 +2,40 @@ import { useEffect, useState } from "react";
 
 function AnimatedCounter({
   value,
-  duration = 1000,
+  duration = 1200,
+  decimals = 0,
 }) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    let start = 0;
+    let startTime;
 
-    const increment =
-      value / (duration / 16);
+    function animate(timestamp) {
+      if (!startTime) startTime = timestamp;
 
-    const timer = setInterval(() => {
-      start += increment;
+      const progress = Math.min(
+        (timestamp - startTime) / duration,
+        1
+      );
 
-      if (start >= value) {
-        setCount(value);
+      const eased =
+        1 - Math.pow(1 - progress, 3);
 
-        clearInterval(timer);
+      setCount(value * eased);
 
-        return;
+      if (progress < 1) {
+        requestAnimationFrame(animate);
       }
+    }
 
-      setCount(Math.floor(start));
-    }, 16);
-
-    return () => clearInterval(timer);
+    requestAnimationFrame(animate);
   }, [value, duration]);
 
-  return <>{count}</>;
+  return (
+    <>
+      {count.toFixed(decimals)}
+    </>
+  );
 }
 
 export default AnimatedCounter;

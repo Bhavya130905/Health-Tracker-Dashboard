@@ -3,19 +3,26 @@ import {
 } from "../../../utils/goalHelpers";
 
 import GoalProgressRing from "./GoalProgressRing";
+import { useMemo } from "react";
+
+import CelebrationBadge from "../../ui/CelebrationBadge";
 import AnimatedCard from "../../ui/AnimatedCard";
 
 function GoalCard({ goal }) {
   const Icon = goal.icon;
 
-  const progress = calculateProgress(
-    goal.current,
-    goal.target
-  );
+  const progress = useMemo(
+  () => calculateProgress(goal.current, goal.target),
+  [goal.current, goal.target]
+);
+
+const completed = progress >= 100;
 
   return (
     <AnimatedCard>
-    <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg dark:border-slate-700 dark:bg-slate-900">
+  <div className="relative rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+    <CelebrationBadge show={completed} />
+
       <div className="flex items-center justify-between">
         <div>
           <Icon

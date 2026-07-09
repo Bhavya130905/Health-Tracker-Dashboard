@@ -4,12 +4,14 @@ import Tooltip from "../ui/Tooltip";
 function SidebarItem({
   item,
   collapsed,
+  onClick,
 }) {
   const Icon = item.icon;
 
   const content = (
     <NavLink
       to={item.path}
+      onClick={onClick}
       aria-label={item.label}
       className={({ isActive }) =>
         `

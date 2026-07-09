@@ -1,21 +1,28 @@
 import { Outlet } from "react-router-dom";
 
-import Navbar from "../components/layout/Navbar.jsx";
-import Sidebar from "../components/layout/Sidebar.jsx";
-import MobileSidebar from "../components/layout/MobileSidebar";
-import useMediaQuery from "../hooks/useMediaQuery";
+import Sidebar from "../components/layout/Sidebar";
+import MobileHeader from "../components/layout/MobileHeader";
+import Container from "../components/ui/Container";
 
 function Layout() {
-  const isDesktop = useMediaQuery("(min-width: 1024px)");
   return (
-    <div className="flex min-h-screen bg-slate-100 dark:bg-slate-950">
-      {isDesktop ? <Sidebar /> : <MobileSidebar />}
+    <div className="flex min-h-screen bg-slate-50 dark:bg-slate-950">
+      <Sidebar />
 
-      <div className="flex flex-1 flex-col">
-        <Navbar />
+      <div className="flex min-h-screen flex-1 flex-col">
+        <MobileHeader />
 
-        <main className="flex-1 overflow-y-auto p-4 lg:p-6">
-          <Outlet />
+        <main
+          id="main-content"
+          className="
+            flex-1
+            overflow-y-auto
+            py-6
+          "
+        >
+          <Container>
+            <Outlet />
+          </Container>
         </main>
       </div>
     </div>

@@ -1,7 +1,10 @@
+import { memo } from "react";
 import { TrendingUp } from "lucide-react";
 
 import AnimatedCounter from "../ui/AnimatedCounter";
 import AnimatedCard from "../ui/AnimatedCard";
+import FloatingIcon from "../ui/FloatingIcon";
+import ProgressBar from "../ui/ProgressBar";
 
 import {
   getIconColor,
@@ -13,19 +16,24 @@ function HealthSummaryCard({ item }) {
 
   return (
     <AnimatedCard>
-      <div
+      <article
+        tabIndex={0}
+        aria-label={item.title}
         className="
-        rounded-3xl
-        border
-        border-slate-200
-        bg-white
-        p-6
-        shadow-sm
-        transition-all
-        duration-300
-        dark:border-slate-700
-        dark:bg-slate-900
-      "
+          rounded-3xl
+          border
+          border-slate-200
+          bg-white
+          p-6
+          shadow-sm
+          transition-all
+          duration-300
+          focus:outline-none
+          focus:ring-2
+          focus:ring-blue-500
+          dark:border-slate-700
+          dark:bg-slate-900
+        "
       >
         <div className="flex items-center justify-between">
           <div>
@@ -42,22 +50,20 @@ function HealthSummaryCard({ item }) {
             </h2>
           </div>
 
-          <div className="rounded-2xl bg-slate-100 p-4 dark:bg-slate-800">
-            <Icon
-              size={28}
-              className={getIconColor(item.color)}
-            />
-          </div>
+          <FloatingIcon>
+            <div className="rounded-2xl bg-slate-100 p-4 dark:bg-slate-800">
+              <Icon
+                size={28}
+                className={getIconColor(item.color)}
+              />
+            </div>
+          </FloatingIcon>
         </div>
 
-        <div className="mt-6 h-2 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700">
-          <div
-            style={{
-              width: `${item.progress}%`,
-            }}
-            className={`h-full rounded-full transition-all duration-1000 ${getProgressColor(
-              item.color
-            )}`}
+        <div className="mt-6">
+          <ProgressBar
+            progress={item.progress}
+            color={getProgressColor(item.color)}
           />
         </div>
 
@@ -71,9 +77,9 @@ function HealthSummaryCard({ item }) {
             {item.trend}
           </span>
         </div>
-      </div>
+      </article>
     </AnimatedCard>
   );
 }
 
-export default HealthSummaryCard;
+export default memo(HealthSummaryCard);

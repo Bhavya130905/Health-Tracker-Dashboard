@@ -1,49 +1,49 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
-const SidebarContext = createContext();
+const SidebarContext = createContext(null);
 
 export function SidebarProvider({ children }) {
-  const [isSidebarOpen, setSidebarOpen] = useState(() => {
-    const saved = localStorage.getItem("sidebar");
-    return saved !== null ? JSON.parse(saved) : true;
-  });
-
-  const [isMobileOpen, setMobileOpen] =
-    useState(false);
+  const [isDesktopOpen, setDesktopOpen] = useState(true);
+  const [isMobileOpen, setMobileOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
 
   useEffect(() => {
-    localStorage.setItem(
-      "sidebar",
-      JSON.stringify(isSidebarOpen)
-    );
-  }, [isSidebarOpen]);
+    function handleResize() {
+      const mobile = window.innerWidth < 1024;
 
-  const toggleSidebar = () =>
-    setSidebarOpen((prev) => !prev);
+      setIsMobile(mobile);
 
-  const openMobileSidebar = () =>
-    setMobileOpen(true);
+      if (!mobile) {
+        setMobileOpen(false);
+      }
+    }
 
-  const closeMobileSidebar = () =>
-    setMobileOpen(false);
+    handleResize();
 
-  const toggleMobileSidebar = () =>
-    setMobileOpen((prev) => !prev);
+    window.addEventListener("resize", handleResize);
+
+    return () =>
+      window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const toggleSidebar = () => {
+    if (isMobile) {
+      setMobileOpen((prev) => !prev);
+    } else {
+      setDesktopOpen((prev) => !prev);
+    }
+  };
+
+  const closeSidebar = () => setMobileOpen(false);
 
   return (
     <SidebarContext.Provider
       value={{
-        isSidebarOpen,
-        toggleSidebar,
+        isMobile,
+        isDesktopOpen,
         isMobileOpen,
-        openMobileSidebar,
-        closeMobileSidebar,
-        toggleMobileSidebar,
+        toggleSidebar,
+        closeSidebar,
       }}
     >
       {children}
@@ -51,5 +51,14 @@ export function SidebarProvider({ children }) {
   );
 }
 
-export const useSidebar = () =>
-  useContext(SidebarContext);
+export function useSidebar() {
+  const context = useContext(SidebarContext);
+
+  if (!context) {
+    throw new Error(
+      "useSidebar must be used inside SidebarProvider"
+    );
+  }
+
+  return context;
+}

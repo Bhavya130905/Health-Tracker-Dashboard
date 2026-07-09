@@ -1,15 +1,18 @@
-import WelcomeCard from "./WelcomeCard";
-import QuoteCard from "./QuoteCard";
+import PageHeader from "../ui/PageHeader";
 
 function DashboardHeader() {
-  return (
-    <section className="grid gap-6 lg:grid-cols-3">
-      <div className="lg:col-span-2">
-        <WelcomeCard />
-      </div>
+  const hour = new Date().getHours();
 
-      <QuoteCard />
-    </section>
+  let greeting = "Good Evening";
+
+  if (hour < 12) greeting = "Good Morning";
+  else if (hour < 18) greeting = "Good Afternoon";
+
+  return (
+    <PageHeader
+      title={`${greeting}, Bhavya 👋`}
+      subtitle="Track your health, goals, and wellness insights in one place."
+    />
   );
 }
 
